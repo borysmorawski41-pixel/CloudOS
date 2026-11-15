@@ -1,0 +1,25 @@
+yaml
+
+name: Build CloudOS
+
+on:  [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout repository
+       uses: actions/checkout@v4
+
+       -name: Install NASM
+        run: sudo apt-get install -y nasm
+
+        -name: Compile Bootloader
+         run: nasm -f bin boot.asm -o cloudos.bin
+
+         -name Upload OS Image
+         uses: actions/upload-artifact@v4
+         with:
+           name: cloudos-image
+           path: cloudos.bin
+      
