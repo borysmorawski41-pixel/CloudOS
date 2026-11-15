@@ -19,7 +19,7 @@ print_string:
       ret
 
       msg:
-          db "Witaj w CloudOS!", 0
+          db "Hello CloudOS!", 0
 
  times 510-($-$$) db 0
  dw 0xaa55
